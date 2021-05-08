@@ -1,12 +1,11 @@
-﻿using App_DAL;
-using App_Utils;
+﻿using App_Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 
-namespace IVAN_MVC.App_Start
+namespace App_Main.App_Start
 {
     public static class BundleExtension
     {

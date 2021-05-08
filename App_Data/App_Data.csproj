@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AppAccessRepository.cs" />
+    <Compile Include="Repository\Contracts\IAppAccessRepository.cs" />
+    <Compile Include="Repository\Contracts\ILoginRepository.cs" />
+    <Compile Include="Repository\Contracts\IUserAccessRepository.cs" />
+    <Compile Include="Repository\LoginRepository.cs" />
+    <Compile Include="Repository\UserAccessRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App_Utils\App_Utils.csproj">
@@ -59,5 +65,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

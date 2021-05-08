@@ -1,8 +1,8 @@
-﻿using IVAN_MVC.App_Start;
+﻿using App_Main.App_Start;
 using System.Web;
 using System.Web.Optimization;
 
-namespace IVAN_MVC
+namespace App_Main
 {
     public class BundleConfig
     {

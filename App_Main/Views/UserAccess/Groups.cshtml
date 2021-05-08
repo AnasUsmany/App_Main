@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Groups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model App_ViewModels.Models.Roles
+
+<!-- ================== MAIN WRAPPER START ================== -->
+<div class="main-wrapper">
+    <div class="topbarhead">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Groups</h2>
+            </div>
+            <div class="col-sm-8 text-right">
+                <button type="button" id="btnNew" class="btn btn-default btn-add"><i class="fa fa-plus"></i>Add New</button>
+            </div>
+        </div>
+    </div>
+    <div class="content_wraper nicescroll">
+        <div id="dgRoles"></div>
+    </div>
+</div>
+<!-- ================== MAIN WRAPPER END ================== -->
+
+<div class="modal fade" id="newGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">New Group</h5>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="frmGroup">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.RoleId, new { id = "RoleId" })
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 text-right">
+                                <label class="control-label required" for="moduleName">Group Name</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                @Html.TextBoxFor(model => model.RoleName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.RoleName)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 text-right">
+                                <label class="control-label required" for="description">Ad Group Name</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                @Html.TextBoxFor(model => model.LdapGroupName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.LdapGroupName)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 text-right">
+                                <label class="control-label required" for="description">Policy</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                <div id="cmbPolicy"></div>
+                                <div id="policyid"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 text-right">
+                                <label class="control-label">Group Type</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                @{
+                                    @Html.EnumDropDownListFor(model => model.RoleFrom, new { @class = "form-control", @Id = "RoleFrom" })
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3">
+                                <label class="checkbox-inline i-checks">
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked", id = "IsActive" })
+                                    <i></i> Active
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a id="btnSaveGroup" class="btn btn-primary save" title="Click to save this group.">Save</a>
+                <a id="btnCancel" href="javascript:void(0);" data-dismiss="modal" class="btn btn-default">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Assets/uac_Roles.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            uac_Roles.getDataGrid();
+            uac_Roles.loadPolicies();
+            $("#btnNew").on("click", function () {
+                
+                
+                uac_Roles.clearForm();
+                $("#newGroup").modal('show');
+            });
+            $("#btnSaveGroup").on("click", function () {
+
+                uac_Roles.saveRole();
+            });
+        });
+    </script>
+
+
+}

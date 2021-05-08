@@ -1,0 +1,133 @@
+﻿@model App_ViewModels.AppAccess
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ================== MAIN WRAPPER START ================== -->
+<div class="main-wrapper">
+    <div class="topbarhead">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Modules</h2>
+            </div>
+            <div class="col-sm-8 text-right">
+                <button type="button" class="btn btn-default btn-add" onclick="$('#newModule').modal('show');"><i class="fa fa-plus"></i>Add New</button>
+            </div>
+        </div>
+    </div>
+    <div class="content_wraper ">
+        <div id="dgModules"></div>
+    </div>
+</div>
+<!-- ================== MAIN WRAPPER END ================== -->
+
+
+
+<div class="modal fade" id="newModule" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h5 class="modal-title" id="myModalLabel">New Module</h5>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="frmModule">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.moduleId, new { id = "moduleId" })
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 text-right">
+                                <label class="control-label required" for="moduleName">Module</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                @Html.TextBoxFor(model => model.moduleName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.moduleName)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 text-right">
+                                <label class="control-label required" for="moduleName">Icon Code</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                @Html.TextBoxFor(model => model.iconCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.iconCode)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3  text-right">
+                                <label class="control-label required" for="moduleName">Sort Number</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                @Html.TextBoxFor(model => model.sortNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.sortNumber)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 text-right">
+                                <label class="control-label required" for="description">Description</label>
+                            </div>
+                            <div class="col-md-8 col-sm-8 text-right">
+                                @Html.TextAreaFor(model => model.description, new { @class = "form-control ui-txtnoresize autosize", rows = "3" })
+                                <label class="ui-charlimit">max. 5000 characters</label>
+                                @Html.ValidationMessageFor(model => model.description)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3">
+                                <label class="checkbox-inline i-checks">
+                                    @Html.CheckBoxFor(model => model.isActive, new { @checked = "checked", id = "isActive" })
+                                    <i></i> Active
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a id="btnSaveModule" href="javascript:void(0);" class="btn btn-primary" title="Click to save this module.">Save</a>
+                <a id="btnCancel" href="javascript:void(0);" data-dismiss="modal" class="btn btn-default">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section scripts{
+    <script src="~/Scripts/Assets/uaa_Modules.js"></script>
+    <script>
+        $(document).ready(function () {
+            modules.getDataGrid();
+
+            $('#btnCancel').click(function () {
+                modules.clearForm();
+            });
+
+            $('#btnSaveModule').on("click", function () {
+                //if (ati_common.validateForm("frmModule")) {
+                modules.saveModule();//saveModule
+                //}
+            });
+        });
+
+    </script>
+
+
+
+
+}

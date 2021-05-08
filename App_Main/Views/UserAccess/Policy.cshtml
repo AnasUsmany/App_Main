@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Policy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model App_ViewModels.Models.Policy
+<!-- ================== MAIN WRAPPER START ================== -->
+<div class="main-wrapper">
+    <div class="topbarhead">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Policy</h2>
+            </div>
+            <div class="col-sm-8 text-right">
+                <button type="button" class="btn btn-success btn-add " onclick="dit_uac_policy.savePolicy()"><i class="fa fa-floppy-o  btn-add"></i> Save</button>
+                <button type="button" class="btn btn-default btn-add"><i class="fa fa-refresh"></i> Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="content_wraper ">
+        <div class="card">
+            <div class="card-body">
+                <form role="form" id="frmPolicy">
+                    <input type="hidden" id="hidCheckedModules" value="" />
+                    @Html.HiddenFor(model => model.policyid, new { id = "policyid" })
+                    <div class="form-group">
+                        <div class="col-md-2 col-sm-3 text-left">
+                            <label class="required  control-label">Policy</label>
+                        </div>
+                        <div class="col-md-9 col-sm-9">
+                            @Html.TextBoxFor(model => model.policyName, new { @class = "form-control input-sm", validate = "group", require = "please enter a value", id = "policyName" })
+                            @Html.ValidationMessageFor(model => model.policyName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 col-sm-3 text-left ui-desclabel">
+                            <label class="required control-label">Description</label>
+                        </div>
+                        <div class="col-md-9 col-sm-9">
+                            @Html.TextAreaFor(model => model.description, new { @class = "form-control input-sm ui-txtnoresize autosize", rows = "4", validate = "group", require = "please enter a value", id = "description" })
+                            <label class="pull-right ui-charlimit">Max. 5000 characters</label>
+                            @Html.ValidationMessageFor(model => model.description)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 col-sm-3">
+                            <label class="control-label "></label>
+                        </div>
+                        <div class="col-md-9 col-sm-9">
+                            <label class="checkbox-inline i-checks">
+                                @Html.CheckBoxFor(model => model.isActive, new { @checked = "checked", id = "isActive" })
+                                <i></i> Is Active
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <div class="Box-wrapper getdata-box ui-tble ui-policytabs">
+            <div class="Box-aside ui-tblecell">
+                <div class="Box getdata-aside">
+                    <div class="Box__header Box__header--sticky ">
+                        <div class="Note-header">
+                            <div class="Note-header__title">Policies</div>
+                        </div>
+                    </div>
+                    <div class="Box__body">
+                        <div id="tabs">
+                            <ul class="nav nav-tabs policyUl ">
+                                @*list-Modules*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Box-innerContent tab-content ui-tblecell">
+                <div id="dvTab"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- ================== MAIN WRAPPER END ================== -->
+@section scripts{
+
+    <script src="~/Scripts/Assets/uac_policy.js"></script>
+    <script>
+        $(document).ready(function () {
+        var model = @Html.Raw(Json.Encode(Model));
+            dit_uac_policy.init(model);
+
+            $("#btnSavePolicy").on("click", function () {
+                if (ati_common.validateForm("frmPolicy")) {
+                    dit_uac_policy.savePolicy();
+                }
+            });
+
+            $('#btnCancel').click(function () {
+                $('#policyName').val('');
+                $("#isActive").prop('checked', false);
+            });
+
+
+            $("#dvTab").on("change", ".chkBox_Modules", function () {
+                //debugger;
+                dit_uac_policy.partialSelectionsCheckBoxHandler(this);
+            });
+            });
+
+    </script>
+
+
+}

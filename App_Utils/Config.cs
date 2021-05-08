@@ -39,5 +39,12 @@ namespace App_Utils
                 return ConfigurationManager.AppSettings["ErrorLogPath"].ToString();
             }
         }
+        public static string ProfilePicPath
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ProfilePicPath"].ToString();
+            }
+        }
     }
 }

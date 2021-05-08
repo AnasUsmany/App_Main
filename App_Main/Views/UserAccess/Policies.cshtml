@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Policies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ================== MAIN WRAPPER START ================== -->
+<div class="main-wrapper">
+    <div class="topbarhead">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Policies</h2>
+            </div>
+            <div class="col-sm-8 text-right">
+                <button type="button" class="btn btn-primary btn-add" onclick="window.open('/UserAccess/Policy');"><i class="fa fa-plus"></i>Add New</button>
+                @*<button type="button" class="btn btn-primary btn-add" onclick="alert('Not Implemented');"><i class="fa fa-reply"></i>Restore</button>*@
+            </div>
+        </div>
+    </div>
+    <div class="content_wraper nicescroll">
+        <div id="dgPolicies"></div>
+    </div>
+</div>
+<!-- ================== MAIN WRAPPER END ================== -->
+@section scripts{
+
+    <script src="~/Scripts/Assets/uac_policy.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                dit_uac_policy.getDataGrid(false);
+            }, 300);
+
+
+        })
+    </script>
+
+
+}

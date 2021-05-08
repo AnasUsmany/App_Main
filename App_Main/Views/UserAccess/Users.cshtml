@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- ================== MAIN WRAPPER START ================== -->
+<div class="main-wrapper">
+    <div class="topbarhead">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Users</h2>
+            </div>
+            <div class="col-sm-8 text-right">
+                <button type="button" class="btn btn-default btn-add" onclick="window.open('/UserAccess/NewUser')"><i class="fa fa-plus"></i> Add New</button>
+            </div>
+        </div>
+    </div>
+    <div class="content_wraper">
+        <div id="dgUsers"></div>
+    </div>
+</div>
+<!-- ================== MAIN WRAPPER END ================== -->
+
+
+@section scripts{
+    <script src="~/Scripts/Assets/uac_User.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            Users.getDataGrid(false);
+
+
+        });
+    </script>
+}

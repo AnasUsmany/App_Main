@@ -1,42 +1,75 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+﻿@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@section master_styles{
+    @RenderSection("css", required: false)
+
+}
+@{
+    App_ViewModels.Models.ViewModels.SessionObj session = (App_ViewModels.Models.ViewModels.SessionObj)Session["DITSession"];
+    bool isAppOwner = session != null && session.isAppOwner ? true:false;
+
+}
+@section SettingsLayout{
+
+    <!-- ================== SIDEBAR MENU START ================== -->
+    <div class="sidebar-menu">
+
+        <div class="sidebar-menu-inner">
+            <ul class="navigation navigation-main navigation-accordion nicescroll">
+                <li>
+                    <a href="javascript:;" onclick="window.location.href='/Dashboard/Index'">
+                        <span class="nav-icon"><i class="fa fa-home"></i></span>
+                        <span class="nav-title">Home</span>
+                    </a>
+                </li>
+                @*@if (isAppOwner)*@
+                @* { *@
+                <li>
+                    <a href="javascript:;" class="active">
+                        <span class="nav-icon"><i class="fa fa-first-order"></i></span>
+                        <span class="nav-title">App Access</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="javascript:;" onclick="window.location.href='/AppAccess/Actions'">Actions</a></li>
+                        <li><a href="javascript:;" onclick="window.location.href='/AppAccess/Index'">Modules</a></li>
+                    </ul>
+                </li>
+                @* } *@
+
+                <li>
+                    <a href="javascript:;">
+                        <span class="nav-icon"><i class="fa fa-user"></i></span>
+                        <span class="nav-title">User Access</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="javascript:;" onclick="window.location.href='/UserAccess/Policies'">Policies</a></li>
+                        <li><a href="javascript:;" onclick="window.location.href='/UserAccess/Policy'">New Policy</a></li>
+                        <li><a href="javascript:;" onclick="window.location.href='/UserAccess/Groups'">Groups</a></li>
+                        <li><a href="javascript:;" onclick="window.location.href='/UserAccess/Users'">Users</a></li>
+                    </ul>
+                </li>
+
+            </ul>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="main-content nicescroll">
         @RenderBody()
-        <hr />
+
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Dynamic Infusion Therapy</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+}
+@section master_Scripts{
     @RenderSection("scripts", required: false)
-</body>
-</html>
+}
+
+
+
+

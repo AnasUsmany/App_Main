@@ -1,0 +1,114 @@
+﻿body {
+    font-family: 'Mulish', sans-serif;
+    background-image: url('../Images/misc/bg-login.jpg');
+}
+
+.containerlogin {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.bx-resgistration {
+    background-color: #fff;
+    border-radius: 20px;
+    width: 450px;
+    max-width: 90%;
+    align-items: center;
+    overflow: hidden;
+}
+
+    .bx-resgistration h1 {
+        color: #9bc63f;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 0px;
+    }
+
+label.form-label {
+    color: #7f7f7f;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    font-size: 14px;
+    border-radius: 8px;
+    min-height: 50px;
+    border: 1px solid #d1d1d1;
+    color: #7f7f7f;
+}
+
+.form-group {
+    width: 100%;
+}
+
+a.frgtpswrd {
+    color: #7f7f7f;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -5px;
+}
+
+.btn-login {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#05316d+1,134897+100 */
+    background: #05316d; /* Old browsers */
+    background: -moz-linear-gradient(left, #05316d 1%, #134897 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #05316d 1%,#134897 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #05316d 1%,#134897 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05316d', endColorstr='#134897',GradientType=1 ); /* IE6-9 */
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 3px 0px 1px #001f49;
+    min-width: 210px;
+    min-height: 50px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.bx-resgistration p {
+    color: #7f7f7f;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.bx-resgistration img {
+    margin-bottom: 20px;
+}
+
+.topcnt {
+    background-color: #f1f1f1;
+    padding: 50px 40px 15px;
+}
+
+.frm-content {
+    padding: 30px 59px;
+}
+
+
+span.input-group-text {
+    min-height: 50px;
+    background-color: transparent;
+    border-right: 0;
+}
+
+span.input-group-text img {
+    margin: 0;
+}
+
+.input-group .form-control {
+    border-left: 0;
+    padding-left: 0;
+}
+
+@media (max-width: 767px) {
+
+    .topcnt, .frm-content {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

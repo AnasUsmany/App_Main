@@ -130,13 +130,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Contracts\IAppAccess.cs" />
+    <Compile Include="Contracts\ILogin.cs" />
+    <Compile Include="Contracts\IUserAccess.cs" />
+    <Compile Include="Controllers\AppAccessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserAccessController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AppAccesModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\SessionExpire.cs" />
+    <Compile Include="Models\UserAccessModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Assets\login.css" />
+    <Content Include="Content\Assets\style.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -184,11 +196,50 @@
     <Content Include="Content\dx.material.teal.light.css" />
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
+    <Content Include="Content\Images\misc\admin.png" />
+    <Content Include="Content\Images\misc\bg-login.jpg" />
+    <Content Include="Content\Images\misc\favicon.ico" />
+    <Content Include="Content\Images\misc\icn-lock.png" />
+    <Content Include="Content\Images\misc\icn-user.png" />
+    <Content Include="Content\Images\misc\icon.png" />
+    <Content Include="Content\Images\misc\logo.png" />
+    <Content Include="Content\Images\misc\no-image.jpg" />
+    <Content Include="Content\Images\ProfilePictures\3f01fde4-fea3-4f50-bcd2-38068d795d39.png" />
+    <Content Include="Content\Images\ProfilePictures\725a49f3-ca4a-418d-b24c-ea380f438f41.png" />
+    <Content Include="Content\Images\ProfilePictures\ab7768a6-4ac5-4105-9b6c-504bc114bd8f.png" />
+    <Content Include="Content\Images\ProfilePictures\eb4f1795-93d7-4360-a07b-f56309681a3b.png" />
+    <Content Include="Content\Images\ProfilePictures\ProfilePictures03d8bff8-f458-4e60-939f-563c7e30465e.png" />
+    <Content Include="Content\Images\ProfilePictures\ProfilePictures68577ec7-d316-4361-8cde-ccae409c9960.png" />
+    <Content Include="Content\Images\ProfilePictures\ProfilePictures9e72031b-3ebe-4869-889a-5c1c80d7ff35.png" />
+    <Content Include="Content\Images\svg\bell.svg" />
+    <Content Include="Content\Images\svg\box.svg" />
+    <Content Include="Content\Images\svg\calendar.svg" />
+    <Content Include="Content\Images\svg\clipboard.svg" />
+    <Content Include="Content\Images\svg\employee %281%29.svg" />
+    <Content Include="Content\Images\svg\employee %282%29.svg" />
+    <Content Include="Content\Images\svg\home.svg" />
+    <Content Include="Content\Images\svg\loupe.svg" />
+    <Content Include="Content\Images\svg\menu.png" />
+    <Content Include="Content\Images\svg\menu.svg" />
+    <Content Include="Content\Images\svg\money.svg" />
+    <Content Include="Content\Images\svg\settings.svg" />
+    <Content Include="Content\Images\svg\shipping.svg" />
+    <Content Include="Content\Images\svg\task.svg" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Assets\App_Employees.js" />
+    <Content Include="Scripts\Assets\App_Facilities.js" />
+    <Content Include="Scripts\Assets\app_Login.js" />
+    <Content Include="Scripts\Assets\uaa_Actions.js" />
+    <Content Include="Scripts\Assets\uaa_Modules.js" />
+    <Content Include="Scripts\Assets\uac_AddFacility.js" />
+    <Content Include="Scripts\Assets\uac_AddUser.js" />
+    <Content Include="Scripts\Assets\uac_policy.js" />
+    <Content Include="Scripts\Assets\uac_Roles.js" />
+    <Content Include="Scripts\Assets\uac_User.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -259,6 +310,7 @@
     <Content Include="Content\fonts\Roboto-300.ttf" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Content\Assets\style.css.map" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -369,7 +421,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -383,10 +434,19 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\AppAccess\Actions.cshtml" />
+    <Content Include="Views\AppAccess\Index.cshtml" />
+    <Content Include="Views\UserAccess\Groups.cshtml" />
+    <Content Include="Views\UserAccess\NewUser.cshtml" />
+    <Content Include="Views\UserAccess\Policies.cshtml" />
+    <Content Include="Views\UserAccess\Policy.cshtml" />
+    <Content Include="Views\UserAccess\Users.cshtml" />
+    <Content Include="Views\Shared\_BaseLayout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
