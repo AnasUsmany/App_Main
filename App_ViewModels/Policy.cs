@@ -69,11 +69,11 @@ namespace App_ViewModels.Models
         [Column("PaId")]
         public int PaId { get; set; }
         [Column("Actionid")]
-        public int Actionid { get; set; }
+        public int ActionId { get; set; }
         [Column("Moduleid")]
-        public int Moduleid { get; set; }
+        public int ModuleId { get; set; }
         [Column("Policyid")]
-        public int Policyid { get; set; }
+        public int PolicyId { get; set; }
         [Column("ActionName")]
         public string ActionName { get; set; }
         [Column("ActionTitle")]

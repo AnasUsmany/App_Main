@@ -22,14 +22,14 @@
             <div class="card-body">
                 <form role="form" id="frmPolicy">
                     <input type="hidden" id="hidCheckedModules" value="" />
-                    @Html.HiddenFor(model => model.policyid, new { id = "policyid" })
+                    @Html.HiddenFor(model => model.PolicyId, new { id = "policyid" })
                     <div class="form-group">
                         <div class="col-md-2 col-sm-3 text-left">
                             <label class="required  control-label">Policy</label>
                         </div>
                         <div class="col-md-9 col-sm-9">
-                            @Html.TextBoxFor(model => model.policyName, new { @class = "form-control input-sm", validate = "group", require = "please enter a value", id = "policyName" })
-                            @Html.ValidationMessageFor(model => model.policyName)
+                            @Html.TextBoxFor(model => model.PolicyName, new { @class = "form-control input-sm", validate = "group", require = "please enter a value", id = "policyName" })
+                            @Html.ValidationMessageFor(model => model.PolicyName)
                         </div>
                     </div>
                     <div class="form-group">
@@ -37,9 +37,9 @@
                             <label class="required control-label">Description</label>
                         </div>
                         <div class="col-md-9 col-sm-9">
-                            @Html.TextAreaFor(model => model.description, new { @class = "form-control input-sm ui-txtnoresize autosize", rows = "4", validate = "group", require = "please enter a value", id = "description" })
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control input-sm ui-txtnoresize autosize", rows = "4", validate = "group", require = "please enter a value", id = "description" })
                             <label class="pull-right ui-charlimit">Max. 5000 characters</label>
-                            @Html.ValidationMessageFor(model => model.description)
+                            @Html.ValidationMessageFor(model => model.Description)
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-9 col-sm-9">
                             <label class="checkbox-inline i-checks">
-                                @Html.CheckBoxFor(model => model.isActive, new { @checked = "checked", id = "isActive" })
+                                @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked", id = "isActive" })
                                 <i></i> Is Active
                             </label>
                         </div>

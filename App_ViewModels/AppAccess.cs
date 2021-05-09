@@ -10,34 +10,34 @@ namespace App_ViewModels
     public class AppAccess
     {
         [Column("moduleId")]
-        public int moduleId { get; set; }
+        public int ModuleId { get; set; }
         [Column("moduleName")]
-        public string moduleName { get; set; }
+        public string ModuleName { get; set; }
         [Column("iconCode")]
-        public string iconCode { get; set; }
+        public string IconCode { get; set; }
         [Column("description")]
-        public string description { get; set; }
+        public string Description { get; set; }
         [Column("actionId")]
-        public int actionId { get; set; }
+        public int ActionId { get; set; }
         [Column("actionName")]
-        public string actionName { get; set; }
+        public string ActionName { get; set; }
         [Column("actionTitle")]
-        public string actionTitle { get; set; }
+        public string ActionTitle { get; set; }
         [Column("controllerName")]
-        public string controllerName { get; set; }
+        public string ControllerName { get; set; }
         [Column("sortNumber")]
-        public int sortNumber { get; set; }
+        public int SortNumber { get; set; }
         [Column("isPublic")]
-        public bool isPublic { get; set; }
+        public bool IsPublic { get; set; }
         [Column("isActive")]
-        public bool isActive { get; set; }
+        public bool IsActive { get; set; }
         [Column("createdDate")]
-        public DateTime createdDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         [Column("createdBy")]
-        public int createdBy { get; set; }
+        public int CreatedBy { get; set; }
         [Column("modifiedDate")]
-        public DateTime modifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
         [Column("modifiedBy")]
-        public int modifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
     }
 }

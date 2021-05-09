@@ -34,15 +34,15 @@
             <div class="modal-body">
                 <form role="form" id="frmModule">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.moduleId, new { id = "moduleId" })
+                    @Html.HiddenFor(model => model.ModuleId, new { id = "moduleId" })
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-3 col-sm-3 text-right">
                                 <label class="control-label required" for="moduleName">Module</label>
                             </div>
                             <div class="col-md-8 col-sm-8">
-                                @Html.TextBoxFor(model => model.moduleName, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.moduleName)
+                                @Html.TextBoxFor(model => model.ModuleName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ModuleName)
                             </div>
                         </div>
                     </div>
@@ -52,8 +52,8 @@
                                 <label class="control-label required" for="moduleName">Icon Code</label>
                             </div>
                             <div class="col-md-8 col-sm-8">
-                                @Html.TextBoxFor(model => model.iconCode, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.iconCode)
+                                @Html.TextBoxFor(model => model.IconCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.IconCode)
                             </div>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
                                 <label class="control-label required" for="moduleName">Sort Number</label>
                             </div>
                             <div class="col-md-8 col-sm-8">
-                                @Html.TextBoxFor(model => model.sortNumber, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.sortNumber)
+                                @Html.TextBoxFor(model => model.SortNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SortNumber)
                             </div>
                         </div>
                     </div>
@@ -74,9 +74,9 @@
                                 <label class="control-label required" for="description">Description</label>
                             </div>
                             <div class="col-md-8 col-sm-8 text-right">
-                                @Html.TextAreaFor(model => model.description, new { @class = "form-control ui-txtnoresize autosize", rows = "3" })
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control ui-txtnoresize autosize", rows = "3" })
                                 <label class="ui-charlimit">max. 5000 characters</label>
-                                @Html.ValidationMessageFor(model => model.description)
+                                @Html.ValidationMessageFor(model => model.Description)
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3">
                                 <label class="checkbox-inline i-checks">
-                                    @Html.CheckBoxFor(model => model.isActive, new { @checked = "checked", id = "isActive" })
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked", id = "isActive" })
                                     <i></i> Active
                                 </label>
                             </div>

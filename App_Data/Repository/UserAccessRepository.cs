@@ -136,7 +136,7 @@ namespace App_Data.Repository
                     {
                         foreach (var actions in policy.Actions)
                         {
-                            AllowActions(response.returnId, actions.Moduleid, actions.Actionid, con);
+                            AllowActions(response.returnId, actions.ModuleId, actions.ActionId, con);
                         }
                     }
                 }

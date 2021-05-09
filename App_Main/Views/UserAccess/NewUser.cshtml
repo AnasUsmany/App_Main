@@ -10,33 +10,18 @@
     <div class="topbarhead">
         <div class="row">
             <div class="col-sm-4">
-                <h2>AddUser</h2>
+                <h2>Add User</h2>
             </div>
             <div class="col-sm-8 text-right">
                 <button type="button" onclick="uac_User.SaveUser();" class="btn btn-primary btn-add">Save</button>
-                <button class="btn btn-primary btn-pdf">Upload Profile</button>
-                <button class="btn btn-primary btn-pdf">View Profile</button>
                 <button id="btnClose" class="btn btn-primary btn-close">close</button>
             </div>
         </div>
     </div>
     <div class="content_wraper">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#basicData">Basic Data</a>
-            </li>
-            <li class="nav-item" id="navtabEmpData">
-                <a class="nav-link" data-toggle="tab" href="#employdata">Employee Data</a>
-            </li>
-            <li class="nav-item" id="navtabPayrollData">
-                <a class="nav-link" data-toggle="tab" href="#paydata">Payroll Data</a>
-            </li>
-        </ul>
+        
         @Html.HiddenFor(model => model.UserId, new { @Id = "UserId" })
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="basicData">
+            <div class="container" id="basicData">
                 <h4 class="tabcontenttitle">Basic Information</h4>
                 <div class="row">
                     <div class="col-lg-3">
@@ -53,8 +38,8 @@
                                 <input type="text" id="txtUserName" class="form-control" />
                             </div>
                             <div class="col-md-6 form-group">
-                                <label class="form-label">ldap UserName:</label>
-                                <input type="text" id="txtldapUserName" class="form-control" />
+                                <label class="form-label">First Name:</label>
+                                <input type="text" id="txtName" class="form-control" />
                             </div>
                             <div class="col-md-6 form-group">
                                 <div id="passwordDiv" class="row">
@@ -73,28 +58,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label class="form-label">First Name:</label>
-                        <input type="text" id="txtFirsName" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Last Name:</label>
-                        <input type="text" id="txtLastName" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
                         <label class="form-label">Email:</label>
                         <input type="email" id="txtEmail" class="form-control" />
                     </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">User From:</label>
-                        @{
-                            @Html.EnumDropDownListFor(model => model.userFrom, new { @class = "form-control", @Id = "userFrom" })
-                        }
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Date Created:</label>
-                        <div id="dtDateCreated" style="width:100%;"></div>
-                    </div>
-
                     <div class="col-md-6 form-group">
                         <label class="form-label">&nbsp;</label>
                         <div class="checkbox">
@@ -104,15 +70,9 @@
                             </label>
                         </div>
                         <div class="checkbox">
-                            <label id="lblIsAllowPic">
-                                <input type="checkbox" id="IsAllowPic" unchecked=""><span class="checkbox-material"><span class="check"></span></span>
-                                Allow PICC Order
-                            </label>
-                        </div>
-                        <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="IsFacilityUser" unchecked=""><span class="checkbox-material"><span class="check"></span></span>
-                                Is Facility User
+                                <input type="checkbox" id="IsAllowLogin" unchecked=""><span class="checkbox-material"><span class="check"></span></span>
+                                Is Allow Login
                             </label>
                         </div>
                     </div>
@@ -124,150 +84,8 @@
                         <label class="form-label">Group* :</label>
                         <div id="cmbGroup"></div>
                     </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Company* :</label>
-                        <div id="cmbCompany"></div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Assign Region :</label>
-                        <div id="ddlRegions"></div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" id="lblFacilitites">Assign Additional Facility Outside an Assigned Region :</label>
-                        <div id="ddlFacilities"></div>
-                    </div>
                 </div>
             </div>
-            <div class="tab-pane" id="employdata">
-                <h4 class="tabcontenttitle">Employee Information</h4>
-                <div class="row">
-
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Title:</label>
-                                <div id="cmbJobTitle"></div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Status:</label>
-                                <div id="cmbStatus"></div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Hired (Quickbooks Hired Date):</label>
-                                <div id="dtHiredDate"></div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Supervisor:</label>
-                                <input type="text" id="txtQbSupervisorName" class="form-control" disabled="disabled" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">QuickBooks Full Name* :</label>
-                        <input type="text" id="txtQbFullName" class="form-control" disabled="disabled" />
-                    </div>
-
-
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Address :</label>
-                        <input type="text" id="txtAddress1" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Address2 :</label>
-                        <input type="text" id="txtAddress2" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">City :</label>
-                        <input type="text" id="txtCity" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">State :</label>
-                        <input type="text" id="txtState" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Zip Code* :</label>
-                        <input type="text" id="txtZipCode" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Home Phone :</label>
-                        <input type="text" id="txtHomePhone" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Mobile Phone :</label>
-                        <input type="text" id="txtMobilePhone" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Alt. Phone:</label>
-                        <input type="text" id="txtAltPhone" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Alt. Email:</label>
-                        <input type="email" id="txtAltEmail" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Note:</label>
-                        <textarea rows="5" id="txtNotes" class="form-control"></textarea>
-                    </div>
-
-                </div>
-
-                <h4 class="tabcontenttitle mt-4">Emergency Contact Information</h4>
-                <div class="row">
-                    <label class="form-label col-md-12">Primary:</label>
-                    <div class="col-md-4 form-group">
-                        <input type="text" id="txtEciPrimaryName" class="form-control" placeholder="Name" />
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <input type="text" id="txtEciPrimaryPhone" class="form-control" placeholder="(985) 809-1659" />
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <input type="text" id="txtEciPrimaryRelation" class="form-control" placeholder="Person" />
-                    </div>
-                </div>
-                <div class="row">
-                    <label class="form-label col-md-12">Secondary:</label>
-                    <div class="col-md-4 form-group">
-                        <input type="text" class="form-control" id="txtEciSecondaryName" placeholder="Name" />
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <input type="text" class="form-control" id="txtEciSecondaryPhone" placeholder="(985) 809-1659" />
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <input type="text" class="form-control" id="txtEciSecondaryRelation" placeholder="Person" />
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="paydata">
-                <h4 class="tabcontenttitle" id="EmployeeNameForTitle"></h4>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Title:</label>
-                        <input type="text" id="txtTitle" class="form-control" disabled="disabled" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Status:</label>
-                        <input type="text" id="txtStatus" class="form-control" disabled="disabled" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Payscale:</label>
-                        <input type="text" class="form-control" disabled="disabled" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Salary:</label>
-                        <input type="text" id="txtSalary" class="form-control" disabled="disabled" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Target:</label>
-                        <input type="text" id="txtTarget" class="form-control" disabled="disabled" />
-                    </div>
-                </div>
-
-                <h4 class="tabcontenttitle mt-4">Dynamic Infusion Therapy</h4>
-                <div id="gridContainer"></div>
-            </div>
-        </div>
     </div>
 </div>
 <!-- ================== MAIN WRAPPER END ================== -->

@@ -49,8 +49,8 @@ namespace App_Main
 
 
             bundles.Add(new StyleBundle("~/Content/dxcss").Include(
-                      "~/Content/dx/dx.common.css",
-                      "~/Content/dx/dx.light.css"
+                      "~/Content/dx.common.css",
+                      "~/Content/dx.light.css"
 
                       ));
 

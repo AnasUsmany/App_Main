@@ -1,5 +1,5 @@
 ﻿@{
-    App_ViewModels.Models.ViewModels.SessionObj session = (App_ViewModels.Models.ViewModels.SessionObj)Session["DITSession"];
+    App_ViewModels.SessionObj session = (App_ViewModels.SessionObj)Session["DITSession"];
     var profilepic = App_Utils.Config.ProfilePicPath + session.profilePicGuid;
     profilepic = profilepic.Replace("~","");
 }

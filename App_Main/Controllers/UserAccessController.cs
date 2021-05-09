@@ -3,19 +3,14 @@ using App_Main.Models;
 using App_Utils;
 using App_ViewModels;
 using App_ViewModels.Models;
-using App_ViewModels.Models;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace IVAN_MVC.Controllers
 {
-    //[SessionExpire]
+    [SessionExpire]
     public class UserAccessController : Controller
     {
         private readonly IUserAccess _userAccess;

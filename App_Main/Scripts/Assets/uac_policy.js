@@ -20,7 +20,7 @@
         
         $('#dgPolicies').dxDataGrid({
             dataSource: data,
-            keyExpr: 'policyid',
+            keyExpr: 'PolicyId',
             showBorders: true,
             allowColumnResizing: true,
             columnAutoWidth: true,
@@ -66,10 +66,10 @@
                 searchPanel.location = "before";
             },
             columns: [
-                { dataField: 'policyid', caption: "ID", sortOrder: 'desc', width: "8%", alignment: "left" },
-                { dataField: "policyName", caption: "Policy Name" },
-                { dataField: "description", caption: "Description" },
-                { dataField: "isActive", caption: "Active" },
+                { dataField: 'PolicyId', caption: "ID", sortOrder: 'desc', width: "8%", alignment: "left" },
+                { dataField: "PolicyName", caption: "Policy Name" },
+                { dataField: "Description", caption: "Description" },
+                { dataField: "IsActive", caption: "Active" },
                 {
                     caption: "Action",
                     alignment: "center",
@@ -139,23 +139,24 @@
 
     bindTabsNewSuccess: function (data) {
         
-        var modules = data.modules;
-        dit_uac_policy.Actions = data.actions;
-        dit_uac_policy.Modules = data.modules;
+        var modules = data.Modules;
+        dit_uac_policy.Actions = data.Actions;
+        dit_uac_policy.Modules = data.Modules;
         $("#tabs ul").append('<li class = "policyTabs active" name = "AllModules"><a><i class="fa fa-accordian" aria-hidden="true"></i><span>All Modules</span></a></li>');
         for (var i = 0; i < modules.length; i++) {
-            $("#tabs ul").append('<li class = "policyTabs" moduleid = "' + modules[i].moduleid + '"><a><i class = "' + modules[i].iconCode + '"></i><span>' + modules[i].moduleName + '</span></a></li>');
+            $("#tabs ul").append('<li class = "policyTabs" moduleid = "' + modules[i].ModuleId + '"><a><i class = "' + modules[i].IconCode + '"></i><span>' + modules[i].ModuleName + '</span></a></li>');
         }
         dit_uac_policy.bindAllModules(modules);
         
     },
 
     bindTabsOnEdit: function (model) {
+        debugger;
         if (model.policyid != "" && model.policyid != 0) {
             var temp = [];
             var partiallySelModules = [];
-            dit_uac_policy.Actions = model.actions;
-            dit_uac_policy.Modules = model.modules;
+            dit_uac_policy.Actions = model.Actions;
+            dit_uac_policy.Modules = model.Modules;
             var modules = model.modules;
             var actions = model.actions;
             var actionCountModuleWise = model.allowedActionsByModule;
@@ -163,7 +164,7 @@
             //______________Create Tabs___________________________
             for (var i = 0; i < modules.length; i++) {
                 //$("#tabs ul").append('<li class = "policyTabs" moduleid = "' + modules[i].moduleid + '"><a>' + modules[i].moduleName + '</a></li>');
-                $("#tabs ul").append('<li class = "policyTabs list-group-item" moduleid = "' + modules[i].moduleid + '"><a><i class = "' + modules[i].iconCode + '"></i><span>' + modules[i].moduleName + '</span></a></li>');
+                $("#tabs ul").append('<li class = "policyTabs list-group-item" moduleid = "' + modules[i].ModuleId + '"><a><i class = "' + modules[i].IconCode + '"></i><span>' + modules[i].ModuleName + '</span></a></li>');
 
                 if (modules[i].pmid != 0) {
                     temp.push(modules[i].moduleid);
@@ -251,12 +252,12 @@
                     width: '3%',
                     cellTemplate: function (container, options) {
                         $("<div>")
-                            .append($('<label class="checkbox-inline i-checks"><input type="checkbox" moduleid=' + options.key.moduleid +
+                            .append($('<label class="checkbox-inline i-checks"><input type="checkbox" moduleid=' + options.key.ModuleId +
                                 ' class="chkBox_Modules" ><i></i></label>'))
                             .appendTo(container);
 
                     },
-                }, { dataField: 'moduleid', visible: false, sortOrder: 'desc' }, 'moduleName', 'description'
+                }, { dataField: 'ModuleId', visible: false, sortOrder: 'desc' }, 'ModuleName', 'Description'
             ],
             showColumnLines: false,
             rowAlternationEnabled: true,
@@ -304,17 +305,16 @@
         var data = new Array();
         var selectAll = "";
         var actions = dit_uac_policy.Actions;
-
+        debugger;
         var checkedModules = $('#hidCheckedModules').val().split(',');
         if (actions != undefined && actions != null) {
             for (var i = 0; i < actions.length; i++) {
-                if (actions[i].moduleid == moduleid) {
+                if (actions[i].ModuleId == moduleid) {
                     data.push(actions[i]);
                     for (var j = 0; j < checkedModules.length; j++) {
                         if (checkedModules[j] == moduleid) {
                             selectAll = "checked"
-                            _checkAndPushAction(actions[i].actionid, actions[i].moduleid);
-                            //_checkAndPushAction(actions[i].actionid, actions[i].moduleid, actions[i].isQuickActionLink);
+                            _checkAndPushAction(actions[i].ActionId, actions[i].ModuleId);
                         }
                     }
                 }
@@ -333,11 +333,11 @@
                         cellTemplate: function (container, options) {
                             
                             $("<div>").append(
-                                $('<label class="checkbox-inline i-checks"><input type="checkbox"  moduleid=' + options.key.moduleid + ' ' + selectAll + ' actionid=' + options.key.actionid + ' class="chkBox"><i></i> </label>')
+                                $('<label class="checkbox-inline i-checks"><input type="checkbox"  moduleid=' + options.key.ModuleId + ' ' + selectAll + ' actionid=' + options.key.ActionId + ' class="chkBox"><i></i> </label>')
                             ).appendTo(container);
                         },
                     },
-                    { dataField: 'actionid', visible: false }, 'actionName', 'actionTitle', 'description'
+                    { dataField: 'ActionId', visible: false }, 'ActionName', 'ActionTitle', 'Description'
                 ],
                 showColumnLines: false,
                 rowAlternationEnabled: true,
@@ -351,7 +351,7 @@
         function _checkAndPushAction(actionid, moduleid, isQuickActionLink) {
 
             var found = dit_uac_policy.selectedActions.some(function (el) {
-                return el.moduleid === moduleid && el.actionid === actionid;
+                return el.ModuleId === moduleid && el.ActionId === actionid;
             });
             if (!found) {
                 dit_uac_policy.selectedActions.push({ actionid: actionid, moduleid: moduleid });
@@ -365,7 +365,7 @@
             var selectedActions = dit_uac_policy.selectedActions;
             if (selectedActions.length > 0) {
                 for (var i = 0; i < selectedActions.length; i++) {
-                    $('input[actionid=' + selectedActions[i].actionid + ']').attr('checked', true);
+                    $('input[actionid=' + selectedActions[i].ActionId + ']').attr('checked', true);
                 }
             }
         }
