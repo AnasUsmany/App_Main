@@ -19,6 +19,8 @@ namespace App_ViewModels.Models
         public string City { get; set; }
         [Column("State")]
         public string State { get; set; }
+        [Column("ZipCode")]
+        public string ZipCode { get; set; }
         [Column("Country")]
         public string Country { get; set; }
         [Column("PostalCode")]

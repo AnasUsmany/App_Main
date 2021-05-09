@@ -1,11 +1,12 @@
 ﻿var uac_User = {
 
     CreateControls: function (model) {
+        debugger;
         if (model !== null && model.UserId>0) {
 
             
             uac_User.loadGroups(model.RoleId);
-            $('#passwordDiv').hide();
+            $('.passwordDiv').hide();
             uac_User.fillForm(model);
             
         }
@@ -39,7 +40,8 @@
         $('#txtZipCode').val(user.ZipCode);
         $('#txtMobilePhone').val(user.MobilePhone);
         $('#txtEmail').val(user.Email);
-        $('#txtUserName').val(user.UserName).attr('disabled','disabled');
+        $('#txtUserName').val(user.UserName).attr('disabled', 'disabled');
+        $('#txtCompanyName').val(user.CompanyName);
         $('#IsAllowLogin').prop('checked', user.IsAllowLogin);
         $('#txtEciSecondaryRelation').val(user.EciSecondaryRealtion);
         $('#IsFacilityUser').prop('checked', user.IsFacUser);
@@ -65,6 +67,7 @@
         user.City = $('#txtCity').val();
         user.State = $('#txtState').val();
         user.ZipCode = $('#txtZipCode').val();
+        user.CompanyName = $('#txtCompanyName').val();
         user.MobilePhone = $('#txtMobilePhone').val();
         user.Email = $('#txtEmail').val();
         user.UserName = $('#txtUserName').val();

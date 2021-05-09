@@ -19,73 +19,85 @@
         </div>
     </div>
     <div class="content_wraper">
-        
-        @Html.HiddenFor(model => model.UserId, new { @Id = "UserId" })
-            <div class="container" id="basicData">
-                <h4 class="tabcontenttitle">Basic Information</h4>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="cstmdp input-group">
-                            <input type="file" id="imgInp">
-                            <img id='img-upload' />
-                            <input type="hidden" id="imagebase64" />
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">UserName:</label>
-                                <input type="text" id="txtUserName" class="form-control" />
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">First Name:</label>
-                                <input type="text" id="txtName" class="form-control" />
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <div id="passwordDiv" class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label class="form-label">Pasword:</label>
-                                        <input type="password" id="txtPassword" class="form-control" />
-                                    </div>
-                                    <div class="col-md-12 form-group">
-                                        <label class="form-label">Confirm pasword:</label>
-                                        <input type="password" id="txtConfirmPassword" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Email:</label>
-                        <input type="email" id="txtEmail" class="form-control" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">&nbsp;</label>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="IsActive" unchecked=""><span class="checkbox-material"><span class="check"></span></span>
-                                Active
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="IsAllowLogin" unchecked=""><span class="checkbox-material"><span class="check"></span></span>
-                                Is Allow Login
-                            </label>
-                        </div>
-                    </div>
-                </div>
 
-                <h4 class="tabcontenttitle">Define User Access</h4>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Group* :</label>
-                        <div id="cmbGroup"></div>
+        @Html.HiddenFor(model => model.UserId, new { @Id = "UserId" })
+        <div class="container" id="basicData">
+            <h4 class="tabcontenttitle">Basic Information</h4>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="cstmdp input-group">
+                        <input type="file" id="imgInp">
+                        <img id='img-upload' />
+                        <input type="hidden" id="imagebase64" />
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">UserName:</label>
+                            <input type="text" id="txtUserName" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">Name:</label>
+                            <input type="text" id="txtName" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group passwordDiv">
+                            <label class="form-label">Pasword:</label>
+                            <input type="password" id="txtPassword" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group passwordDiv">
+                            <label class="form-label">Confirm pasword:</label>
+                            <input type="password" id="txtConfirmPassword" class="form-control" />
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Email:</label>
+                    <input type="email" id="txtEmail" class="form-control" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">City:</label>
+                    <input type="email" id="txtCity" class="form-control" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">State:</label>
+                    <input type="email" id="txtState" class="form-control" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Zip Code:</label>
+                    <input type="email" id="txtZipCode" class="form-control" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Company:</label>
+                    <input type="email" id="txtCompanyName" class="form-control" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">&nbsp;</label>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="IsActive" unchecked=""><span class="checkbox-material"><span class="check"></span></span>
+                            Active
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="IsAllowLogin" unchecked=""><span class="checkbox-material"><span class="check"></span></span>
+                            Is Allow Login
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="tabcontenttitle">Define User Access</h4>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Group* :</label>
+                    <div id="cmbGroup"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- ================== MAIN WRAPPER END ================== -->
@@ -148,8 +160,8 @@
             uac_User.CreateControls(model);
 
 
-            
-            
+
+
 
 
 

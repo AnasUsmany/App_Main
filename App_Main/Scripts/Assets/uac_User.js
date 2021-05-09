@@ -14,14 +14,15 @@
                 cellTemplate: function (container, options) {
                     $("<div>")
                         .append(
-                            $("<button>").click(function () {
-                                window.open('/UserAccess/EditUser/' + options.key);
+                        $("<button>").click(function () {
+                            window.open('/UserAccess/EditUser/' + options.key.UserId);
+
                             }).attr("type", "button").attr("id", options.key + "_EditIncompleteGrid").attr('class', 'grid-action-icon').html('<i class="fa fa-pencil-square-o iconbox" aria-hidden="true"></i>'))
                         .append(
                             $("<button>").click(function () {
 
                                 if (confirm('Are you sure you want to delete this User?')) {
-                                    Users.DeleteUser(options.key);
+                                    Users.DeleteUser(options.key.UserId);
                                 }
                             }).attr("type", "button").attr("id", options.key + "").attr('class', 'grid-action-icon deleteicon').html('<i class="fa fa-trash-o iconbox" aria-hidden="true"></i'))
                         .appendTo(container);
